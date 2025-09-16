@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typebot – bot2-dramaria</title>
+  <style>
+    /* ocupa a tela toda e remove margens */
+    html, body { height: 100%; margin: 0; }
+    /* use 100dvh para mobile (evita barra do navegador cortar) */
+    typebot-standard { height: 100dvh; display: block; }
+  </style>
+</head>
+<body>
+  <!-- elemento obrigatório do Typebot Standard -->
+  <typebot-standard></typebot-standard>
+
+  <!-- inicialização -->
+  <script type="module">
+    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.78/dist/web.js';
+
+    Typebot.initStandard({
+      typebot: "bot2-dramaria",
+      apiHost: "https://tb.lavishcreative.com",
+    });
+  </script>
+  <noscript>Ative o JavaScript para ver o bot.</noscript>
+</body>
+</html>
