@@ -17,13 +17,20 @@
 
   <!-- inicialização -->
   <script type="module">
-    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.78/dist/web.js';
+  import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.78/dist/web.js';
 
-    Typebot.initStandard({
-      typebot: "bot2-dramaria",
-      apiHost: "https://tb.lavishcreative.com",
-    });
-  </script>
+  // pega ?video=panes&utm_source=meta...
+  const prefilled = Object.fromEntries(new URLSearchParams(location.search).entries());
+
+  Typebot.initStandard({
+    typebot: "bot2-dramaria",
+    apiHost: "https://tb.lavishcreative.com",
+    prefilledVariables: prefilled, // injeta no bot
+  });
+
+  // Se precisar alterar depois que a página já carregou:
+  // Typebot.setPrefilledVariables(prefilled);
+</script>
   <noscript>Ative o JavaScript para ver o bot.</noscript>
 </body>
 </html>
