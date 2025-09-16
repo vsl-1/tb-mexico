@@ -3,34 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Typebot – bot2-dramaria</title>
+  <title>Typebot</title>
   <style>
-    /* ocupa a tela toda e remove margens */
     html, body { height: 100%; margin: 0; }
-    /* use 100dvh para mobile (evita barra do navegador cortar) */
-    typebot-standard { height: 100dvh; display: block; }
+    #tb { border: 0; width: 100%; height: 100dvh; display: block; }
   </style>
 </head>
 <body>
-  <!-- elemento obrigatório do Typebot Standard -->
-  <typebot-standard></typebot-standard>
+  <iframe id="tb" title="Typebot"></iframe>
 
-  <!-- inicialização -->
-  <script type="module">
-  import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.78/dist/web.js';
+  <script>
+    // Base do seu bot
+    const base = "https://tb.lavishcreative.com/bot2-dramaria";
 
-  // pega ?video=panes&utm_source=meta...
-  const prefilled = Object.fromEntries(new URLSearchParams(location.search).entries());
+    // Repassa todos os query params da página para o iframe
+    const qs = window.location.search; // ex.: "?video=panes&utm_source=meta"
+    document.getElementById("tb").src = base + (qs || "");
 
-  Typebot.initStandard({
-    typebot: "bot2-dramaria",
-    apiHost: "https://tb.lavishcreative.com",
-    prefilledVariables: prefilled, // injeta no bot
-  });
-
-  // Se precisar alterar depois que a página já carregou:
-  // Typebot.setPrefilledVariables(prefilled);
-</script>
-  <noscript>Ative o JavaScript para ver o bot.</noscript>
+    // (Opcional) limpa a barra de endereço depois de capturar os params
+    // if (qs) history.replaceState({}, "", location.pathname);
+  </script>
 </body>
 </html>
